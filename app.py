@@ -33,7 +33,7 @@ def main():
                     dst.putdata(data)
                     dst = convert(dst)
                     buf = BytesIO()
-                    dst.save(buf, format="JPEG")
+                    dst.save(buf, format="PNG")
                     byte_im = buf.getvalue()
                     st.download_button(
                         label="Download image",
