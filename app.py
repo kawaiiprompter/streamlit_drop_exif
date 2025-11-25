@@ -43,6 +43,18 @@ def main():
                     )
             else:
                 st.text("no exif")
+                with Image.new(mode, size) as dst:
+                    dst.putdata(data)
+                    dst = convert(dst)
+                    buf = BytesIO()
+                    dst.save(buf, format="PNG")
+                    byte_im = buf.getvalue()
+                    st.download_button(
+                        label="Download image",
+                        data=byte_im,
+                        file_name=f"nometa_{img_file_buffer.name}",
+                        mime="image/png"
+                    )
 
 if __name__ == "__main__":
     main()
